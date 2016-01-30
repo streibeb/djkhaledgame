@@ -1,0 +1,17 @@
+/Users/kylesmyth/Documents/Games/dj/Temp/bin/Debug/Assembly-CSharp-firstpass.dll.mdb
+/Users/kylesmyth/Documents/Games/dj/Temp/bin/Debug/Assembly-CSharp-firstpass.dll
+/Users/kylesmyth/Documents/Games/dj/obj/Debug/Assembly-CSharp-firstpass.dll
+/Users/kylesmyth/Documents/Games/dj/obj/Debug/Assembly-CSharp-firstpass.dll.mdb
+/Users/kylesmyth/Documents/Games/dj/Temp/bin/Debug/UnityEngine.dll
+/Users/kylesmyth/Documents/Games/dj/Temp/bin/Debug/UnityEditor.dll
+/Users/kylesmyth/Documents/Games/dj/Temp/bin/Debug/UnityEngine.Networking.dll
+/Users/kylesmyth/Documents/Games/dj/Temp/bin/Debug/UnityEngine.UI.dll
+/Users/kylesmyth/Documents/Games/dj/Temp/bin/Debug/Mono.Cecil.dll
+/Users/kylesmyth/Documents/Games/dj/Temp/bin/Debug/Unity.SerializationLogic.dll
+/Users/kylesmyth/Documents/Games/dj/Temp/bin/Debug/Unity.DataContract.dll
+/Users/kylesmyth/Documents/Games/dj/Temp/bin/Debug/ICSharpCode.NRefactory.dll
+/Users/kylesmyth/Documents/Games/dj/Temp/bin/Debug/Unity.UNetWeaver.dll
+/Users/kylesmyth/Documents/Games/dj/Temp/bin/Debug/Unity.UNetWeaver.dll.mdb
+/Users/kylesmyth/Documents/Games/dj/Temp/bin/Debug/Unity.CecilTools.dll
+/Users/kylesmyth/Documents/Games/dj/Temp/bin/Debug/Mono.Cecil.Pdb.dll
+/Users/kylesmyth/Documents/Games/dj/Temp/bin/Debug/Mono.Cecil.Mdb.dll
