@@ -240,7 +240,7 @@ public class gamestate : MonoBehaviour {
 			if (stat.Value < modifiers.DecayThreshold) {
 				gameState.Life -= 1;
 				stat.IsCritical = true;
-				if (gameState.Life == 0) {
+				if (gameState.Life <= 0) {
 					GameOver ();
 				}
 			} else {
