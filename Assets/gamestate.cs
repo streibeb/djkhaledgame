@@ -21,6 +21,7 @@ public class gamestate : MonoBehaviour {
 	public AudioClip[] snapchatClips;
 	public AudioClip[] cocoaButterClips;
 
+	public AudioClip[] blessUp;
 	public AudioClip[] winClips;
 	public AudioClip[] loseClips;
 
@@ -290,7 +291,7 @@ public class gamestate : MonoBehaviour {
 			switch (subtype) {
 			case 3: 
 				randomClip = Random.Range (0, jetskiClips.Length);
-					mainSound.clip = jetskiClips [randomClip];
+				mainSound.clip = jetskiClips [randomClip];
 				break;
 			case 2:
 				randomClip = Random.Range (0, lionClips.Length);
@@ -305,6 +306,9 @@ public class gamestate : MonoBehaviour {
 				mainSound.clip = snapchatClips [randomClip];
 				break;
 			}
+		} else if (type == "blessup") {
+			randomClip = Random.Range (0, blessUp.Length);
+			mainSound.clip = blessUp [randomClip];
 		}
 
 		mainSound.Stop ();
@@ -388,6 +392,11 @@ public class gamestate : MonoBehaviour {
 		int scoreChange = majorIncrease - majorDecrease - minorDecrease;
 
 		gameState.Score = scoreChange;
+
+		if (scoreChange > 0 && gameState.Score % 100 == 0) {
+			PlaySound ("blessup", 0);
+		}
+
 
 		// UPDATE UI
 	}

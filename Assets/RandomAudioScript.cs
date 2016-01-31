@@ -30,7 +30,8 @@ public class RandomAudioScript : MonoBehaviour {
 				source.volume = 0.1f;
 			}
 		} else {
-			if (Random.Range (0, 50) == 22) {
+			int playSoundNumber = Random.Range (0, 500);
+			if (playSoundNumber == 22) {
 				PlaySound ();
 			}
 		}
