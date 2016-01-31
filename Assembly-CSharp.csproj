@@ -47,6 +47,7 @@
   <ItemGroup>
      <Compile Include="Assets\UI\PanelController.cs" />
      <Compile Include="Assets\animation.cs" />
+     <Compile Include="Assets\gamestate.cs" />
      <Compile Include="Assets\jetskiAnimation.cs" />
      <None Include="Assets\Standard Assets\Effects\ToonShading\Shaders\ToonBasic.shader" />
      <None Include="Assets\Standard Assets\Environment\Water\Water4\Shaders\FXWater4Simple.shader" />
