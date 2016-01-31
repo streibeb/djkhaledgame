@@ -204,7 +204,7 @@ public class gamestate : MonoBehaviour {
 
 	}
 
-	private void FeedKhaled(int moodId) {
+	public void FeedKhaled(int moodId) {
 		var majorIncrease = 0;
 		var majorDecrease = 1;
 		var minorDecrease = 2;
@@ -212,7 +212,7 @@ public class gamestate : MonoBehaviour {
 		ModifyStats (moodId, majorIncrease, majorDecrease, minorDecrease);
 	}
 
-	private void DrinkKhaled(int moodId) {
+	public void DrinkKhaled(int moodId) {
 		var majorIncrease = 1;
 		var majorDecrease = 3;
 		var minorDecrease = 0;
@@ -220,7 +220,7 @@ public class gamestate : MonoBehaviour {
 		ModifyStats (moodId, majorIncrease, majorDecrease, minorDecrease);
 	}
 
-	private void WashKhaled(int moodId) {
+	public void WashKhaled(int moodId) {
 		var majorIncrease = 2;
 		var majorDecrease = 0;
 		var minorDecrease = 3;
@@ -230,7 +230,7 @@ public class gamestate : MonoBehaviour {
 
 
 
-	private void ActivityKhaled(int moodId) {
+	public void ActivityKhaled(int moodId) {
 		var majorIncrease = 3;
 		var majorDecrease = 2;
 		var minorDecrease = 1;
