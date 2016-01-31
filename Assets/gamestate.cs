@@ -252,7 +252,7 @@ public class gamestate : MonoBehaviour {
 		healthBar.rectTransform.localScale = new Vector3(1.0f, gameState.Life / 100.0f, 1.0f);
 		if (gameState.Life <= 50 && gameState.Life > 25) {
 			healthBar.color = Color.yellow;
-		} else if (gameState.Life < 25) {
+		} else if (gameState.Life <= 25) {
 			healthBar.color = Color.red;
 		} else {
 			healthBar.color = Color.green;
