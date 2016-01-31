@@ -44,6 +44,9 @@ public class gamestate : MonoBehaviour {
 	public Text moodText;
 	public Text lifeText;
 
+	public Image healthBar;
+	public Animator moodController;
+
 	private class Modifiers {
 		public int Correct;
 		public float WrongMood;
@@ -132,6 +135,7 @@ public class gamestate : MonoBehaviour {
 		moods [3].description = "Angry";
 
 		gameState = new GameState (moods[0]);
+		moodController.SetInteger ("Mood", 0);
 
 		mainSound.outputAudioMixerGroup = output;
 	}
@@ -203,7 +207,7 @@ public class gamestate : MonoBehaviour {
 		gameState.mood = moods [random];
 
 		// update UI
-
+		moodController.SetInteger("Mood", random);
 	}
 
 	private void NeedChanger() {
@@ -230,6 +234,14 @@ public class gamestate : MonoBehaviour {
 			}
 		}
 		// update ui
+		healthBar.rectTransform.localScale = new Vector3(1.0f, gameState.Life / 100.0f, 1.0f);
+		if (gameState.Life <= 50 && gameState.Life > 25) {
+			healthBar.color = Color.yellow;
+		} else if (gameState.Life < 25) {
+			healthBar.color = Color.red;
+		} else {
+			healthBar.color = Color.green;
+		}
 	}
 
 	private void GameOver() {
@@ -320,7 +332,7 @@ public class gamestate : MonoBehaviour {
 		var majorDecrease = 1;
 		var minorDecrease = 2;
 
-		PlaySound ("food", moodId);
+		//PlaySound ("food", moodId);
 		ModifyStats (moodId, majorIncrease, majorDecrease, minorDecrease);
 	}
 
