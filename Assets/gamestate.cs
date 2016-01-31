@@ -16,6 +16,10 @@ public class gamestate : MonoBehaviour {
 	public Text hyText;
 	public Text activityText;
 
+	public Text scoreText;
+	public Text moodText;
+	public Text lifeText;
+
 	private class Modifiers {
 		public int Correct;
 		public float WrongMood;
@@ -111,6 +115,10 @@ public class gamestate : MonoBehaviour {
 		this.foodText.text = "Food :" + this.gameState.Stats [0].Value.ToString ();
 		this.hyText.text = "Hygeine :" + this.gameState.Stats [2].Value.ToString ();
 		this.drinkText.text = "Drink :" + this.gameState.Stats [1].Value.ToString ();
+
+		this.scoreText.text = "Bless Up Points :" + this.gameState.Score.ToString();
+		this.moodText.text = "Mood :" + this.gameState.mood.description;
+		this.lifeText.text = "Life :" + this.gameState.Life.ToString();
 	}
 
 	// Update is called once per frame
