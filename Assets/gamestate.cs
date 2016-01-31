@@ -1,8 +1,31 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using UnityEngine.Audio;
 
 public class gamestate : MonoBehaviour {
+
+	public AudioClip[] eggWhiteClips;
+	public AudioClip[] sausageClips;
+	public AudioClip[] mcdonaldsClips;
+	public AudioClip[] genericFoodClips;
+
+	public AudioClip[] drinkClips;
+
+	public AudioClip[] hottubClips;
+	public AudioClip[] showerClips;
+	public AudioClip[] genericHygieneClips;
+
+	public AudioClip[] jetskiClips;
+	public AudioClip[] lionClips;
+	public AudioClip[] snapchatClips;
+	public AudioClip[] cocoaButterClips;
+
+	public AudioClip[] winClips;
+	public AudioClip[] loseClips;
+
+	public AudioMixerGroup output;
+	public AudioSource mainSound;
 
 	private float updateTimer = 0;
 	private float moodTimer = 0;
@@ -108,6 +131,8 @@ public class gamestate : MonoBehaviour {
 		moods [3].description = "Angry";
 
 		gameState = new GameState (moods[0]);
+
+		mainSound.outputAudioMixerGroup = output;
 	}
 
 	void setText() {
@@ -167,8 +192,8 @@ public class gamestate : MonoBehaviour {
 			this.moodTimer = 0;
 		}
 
-		Debug.Log (this.gameState.Stats [0].Value);
-		Debug.Log (this.gameState.mood.description);
+		//Debug.Log (this.gameState.Stats [0].Value);
+		//Debug.Log (this.gameState.mood.description);
 	}
 
 	private void MoodChanger() {
@@ -210,6 +235,80 @@ public class gamestate : MonoBehaviour {
 
 		// update ui
 
+		int randomClip = Random.Range (0, eggWhiteClips.Length);
+		mainSound.clip = loseClips[randomClip];
+		mainSound.Stop ();
+		mainSound.Play ();
+
+	}
+
+	private void PlaySound(string type, int subtype) {
+		int randomClip;
+
+		if (type == "food") {
+			switch (subtype) {
+			case 0: 
+				randomClip = Random.Range (0, eggWhiteClips.Length);
+				mainSound.clip = eggWhiteClips [randomClip];
+				break;
+			case 1:
+				randomClip = Random.Range (0, sausageClips.Length);
+				mainSound.clip = sausageClips [randomClip];
+				break;
+			case 2:
+				randomClip = Random.Range (0, mcdonaldsClips.Length);
+				mainSound.clip = mcdonaldsClips [randomClip];
+				break;
+			case 3:
+				randomClip = Random.Range (0, genericFoodClips.Length);
+				mainSound.clip = genericFoodClips [randomClip];
+				break;
+			}
+		} else if (type == "drink") {
+			randomClip = Random.Range (0, drinkClips.Length);
+			mainSound.clip = drinkClips [randomClip];
+		} else if (type == "wash") {
+			switch (subtype) {
+			case 0: 
+				randomClip = Random.Range (0, genericHygieneClips.Length);
+				mainSound.clip = genericHygieneClips [randomClip];
+				break;
+			case 2:
+				randomClip = Random.Range (0, hottubClips.Length);
+				mainSound.clip = hottubClips [randomClip];
+				break;
+			case 1:
+				randomClip = Random.Range (0, showerClips.Length);
+				mainSound.clip = showerClips [randomClip];
+				break;
+			case 3:
+				randomClip = Random.Range (0, genericHygieneClips.Length);
+				mainSound.clip = genericHygieneClips [randomClip];
+				break;
+			}
+		} else if (type == "activity") {
+			switch (subtype) {
+			case 3: 
+				randomClip = Random.Range (0, jetskiClips.Length);
+					mainSound.clip = jetskiClips [randomClip];
+				break;
+			case 2:
+				randomClip = Random.Range (0, lionClips.Length);
+				mainSound.clip = lionClips [randomClip];
+				break;
+			case 1:
+				randomClip = Random.Range (0, cocoaButterClips.Length);
+				mainSound.clip = cocoaButterClips [randomClip];
+				break;
+			case 0:
+				randomClip = Random.Range (0, snapchatClips.Length);
+				mainSound.clip = snapchatClips [randomClip];
+				break;
+			}
+		}
+
+		mainSound.Stop ();
+		mainSound.Play ();
 	}
 
 	public void FeedKhaled(int moodId) {
@@ -217,6 +316,7 @@ public class gamestate : MonoBehaviour {
 		var majorDecrease = 1;
 		var minorDecrease = 2;
 
+		PlaySound ("food", moodId);
 		ModifyStats (moodId, majorIncrease, majorDecrease, minorDecrease);
 	}
 
@@ -225,6 +325,7 @@ public class gamestate : MonoBehaviour {
 		var majorDecrease = 3;
 		var minorDecrease = 0;
 
+		PlaySound ("drink", moodId);
 		ModifyStats (moodId, majorIncrease, majorDecrease, minorDecrease);
 	}
 
@@ -233,6 +334,7 @@ public class gamestate : MonoBehaviour {
 		var majorDecrease = 0;
 		var minorDecrease = 3;
 
+		PlaySound ("wash", moodId);
 		ModifyStats (moodId, majorIncrease, majorDecrease, minorDecrease);
 	}
 
@@ -243,6 +345,7 @@ public class gamestate : MonoBehaviour {
 		var majorDecrease = 2;
 		var minorDecrease = 1;
 
+		PlaySound ("activity", moodId);
 		ModifyStats (moodId, majorIncrease, majorDecrease, minorDecrease);
 	}
 
