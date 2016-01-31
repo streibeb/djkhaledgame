@@ -27,6 +27,7 @@ public class gamestate : MonoBehaviour {
 
 	public AudioMixerGroup output;
 	public AudioSource mainSound;
+	private bool PlayedEndSound = false;
 
 	private float updateTimer = 0;
 	private float moodTimer = 0;
@@ -260,13 +261,19 @@ public class gamestate : MonoBehaviour {
 
 	private void GameOver() {
 
+		if (!PlayedEndSound) {
+			int randomClip = Random.Range (0, loseClips.Length);
+			mainSound.clip = loseClips [randomClip];
+			mainSound.Stop ();
+			mainSound.volume = 1.0f;
+			mainSound.Play ();
+			PlayedEndSound = true;
+		}
+
 		// update ui
 		gameOverController.enabled = true;
 
-		int randomClip = Random.Range (0, eggWhiteClips.Length);
-		mainSound.clip = loseClips[randomClip];
-		mainSound.Stop ();
-		mainSound.Play ();
+
 
 	}
 

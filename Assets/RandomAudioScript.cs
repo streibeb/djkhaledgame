@@ -18,7 +18,7 @@ public class RandomAudioScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (mainSound.isPlaying) {
-			source.volume = 0.1f;
+			source.volume = 0.02f;
 		} else if (!mainSound.isPlaying && source.isPlaying) {
 			if (source.clip.name == "chillin-music") {
 				source.volume = 1.0f;
