@@ -347,7 +347,7 @@ public class gamestate : MonoBehaviour {
 		var majorDecrease = 1;
 		var minorDecrease = 2;
 
-		//PlaySound ("food", moodId);
+		PlaySound ("food", moodId);
 		ModifyStats (moodId, majorIncrease, majorDecrease, minorDecrease);
 	}
 
@@ -356,7 +356,7 @@ public class gamestate : MonoBehaviour {
 		var majorDecrease = 3;
 		var minorDecrease = 0;
 
-		//PlaySound ("drink", moodId);
+		PlaySound ("drink", moodId);
 		ModifyStats (moodId, majorIncrease, majorDecrease, minorDecrease);
 	}
 
@@ -365,7 +365,7 @@ public class gamestate : MonoBehaviour {
 		var majorDecrease = 0;
 		var minorDecrease = 3;
 
-		//PlaySound ("wash", moodId);
+		PlaySound ("wash", moodId);
 		ModifyStats (moodId, majorIncrease, majorDecrease, minorDecrease);
 	}
 
@@ -376,7 +376,7 @@ public class gamestate : MonoBehaviour {
 		var majorDecrease = 2;
 		var minorDecrease = 1;
 
-		//PlaySound ("activity", moodId);
+		PlaySound ("activity", moodId);
 		ModifyStats (moodId, majorIncrease, majorDecrease, minorDecrease);
 	}
 
