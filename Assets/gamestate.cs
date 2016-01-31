@@ -46,6 +46,10 @@ public class gamestate : MonoBehaviour {
 
 	public Image healthBar;
 	public Animator moodController;
+	public SpriteRenderer facial;
+	public Sprite[] faces;
+	public Animator gameOverController;
+	public SpriteRenderer[] bubbles;
 
 	private class Modifiers {
 		public int Correct;
@@ -137,6 +141,11 @@ public class gamestate : MonoBehaviour {
 		gameState = new GameState (moods[0]);
 		moodController.SetInteger ("Mood", 0);
 
+		bubbles[0].enabled = false;
+		bubbles[1].enabled = false;
+		bubbles[2].enabled = false;
+		bubbles[3].enabled = false;
+
 		mainSound.outputAudioMixerGroup = output;
 	}
 
@@ -158,7 +167,7 @@ public class gamestate : MonoBehaviour {
 		this.moodTimer += Time.deltaTime;
 
 		if (this.updateTimer >= 1) {
-			var randomState = Random.Range(0,3);
+			var randomState = Random.Range(0,4);
 			var state = gameState.Stats [randomState];
 
 			switch (state.Name) {
@@ -202,23 +211,28 @@ public class gamestate : MonoBehaviour {
 	}
 
 	private void MoodChanger() {
-		int random = Random.Range(0,3);
+		int random = Random.Range(0,4);
 
 		gameState.mood = moods [random];
 
 		// update UI
 		moodController.SetInteger("Mood", random);
+		facial.sprite = faces [random];
 	}
 
 	private void NeedChanger() {
-		foreach (var stat in gameState.Stats) {
+		int i = 0;
+		foreach (var stat in gameState.Stats) 
+		{
 			if (stat.Value < modifiers.NeedThreshold) {
 				stat.IsNeeded = true;
+				bubbles[i].enabled = true;
 			} else {
 				stat.IsNeeded = false;
+				bubbles[i].enabled = false;
 			}
+			i++;
 		}
-		// update UI
 	}
 
 	private void LifeDecay() {
@@ -247,6 +261,7 @@ public class gamestate : MonoBehaviour {
 	private void GameOver() {
 
 		// update ui
+		gameOverController.enabled = true;
 
 		int randomClip = Random.Range (0, eggWhiteClips.Length);
 		mainSound.clip = loseClips[randomClip];
@@ -341,7 +356,7 @@ public class gamestate : MonoBehaviour {
 		var majorDecrease = 3;
 		var minorDecrease = 0;
 
-		PlaySound ("drink", moodId);
+		//PlaySound ("drink", moodId);
 		ModifyStats (moodId, majorIncrease, majorDecrease, minorDecrease);
 	}
 
@@ -350,7 +365,7 @@ public class gamestate : MonoBehaviour {
 		var majorDecrease = 0;
 		var minorDecrease = 3;
 
-		PlaySound ("wash", moodId);
+		//PlaySound ("wash", moodId);
 		ModifyStats (moodId, majorIncrease, majorDecrease, minorDecrease);
 	}
 
@@ -361,7 +376,7 @@ public class gamestate : MonoBehaviour {
 		var majorDecrease = 2;
 		var minorDecrease = 1;
 
-		PlaySound ("activity", moodId);
+		//PlaySound ("activity", moodId);
 		ModifyStats (moodId, majorIncrease, majorDecrease, minorDecrease);
 	}
 
@@ -372,16 +387,17 @@ public class gamestate : MonoBehaviour {
 
 		if (gameState.Stats [majorIncreaseVariable].IsNeeded) {
 			if (gameState.mood.description == moods [moodId].description) {
-				majorIncrease *= modifiers.Correct;
+				majorIncrease = Mathf.RoundToInt(majorIncrease * modifiers.Correct);
 			} else {
-				majorIncrease *= Mathf.RoundToInt(modifiers.WrongMood);
+				majorIncrease = Mathf.RoundToInt(majorIncrease * modifiers.WrongMood);
 			}
 			if ((gameState.Stats [majorIncreaseVariable].Value + majorIncrease) >= modifiers.NeedThreshold) {
 				gameState.Stats [majorIncreaseVariable].IsNeeded = false;
 			}
 		} else {
-			majorIncrease *= Mathf.RoundToInt(modifiers.WrongStat);
+			majorIncrease = Mathf.RoundToInt(majorIncrease * modifiers.WrongStat);
 		}
+
 
 		if ((gameState.Stats [majorIncreaseVariable].Value + majorIncrease) >= 100) {
 			gameState.Stats [majorIncreaseVariable].Value = 100;

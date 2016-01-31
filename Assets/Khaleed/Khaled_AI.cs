@@ -8,6 +8,8 @@ public class Khaled_AI : MonoBehaviour {
 
 	public float xStart;// = 369.56f;
 	public float zStart;// = 241.92f;
+	public int MOVE_RANGE = 50;
+	public int FRAMES = 60;
 
 	// Use this for initialization
 	void Start () 
@@ -41,7 +43,7 @@ public class Khaled_AI : MonoBehaviour {
 
         counter++;
 
-        if (counter >= 45)
+        if (counter >= FRAMES)
         {
             float zPlus = curZ + 1.5f;
             float xPlus = curX + 1.5f;
@@ -68,6 +70,8 @@ public class Khaled_AI : MonoBehaviour {
 
             khaled_bod.velocity = movement;
 
+			//khaled_bod.transform.rotation = Quaternion.Slerp (transform.rotation, Quaternion.Euler(new Vector3(0,Random.Range(-359,359),0)), Time.deltaTime*5);
+
             counter = 0;
         }
 	}
@@ -79,19 +83,19 @@ public class Khaled_AI : MonoBehaviour {
 
         if (direction <= 33)//if 0, then x
         {
-            x = Random.Range(0, 10);
+			x = Random.Range(0, MOVE_RANGE);
             z = 0;
         }
 
         if (direction > 33 && direction <= 66)//if 0, then x
         {
-            x = Random.Range(0, 10);
-            z = Random.Range(0, 10); ;
+			x = Random.Range(0, MOVE_RANGE);
+			z = Random.Range(0, MOVE_RANGE); ;
         }
 
         else//else z
         {
-            z = Random.Range(0, 10);
+			z = Random.Range(0, MOVE_RANGE);
             x = 0;
         }
 
