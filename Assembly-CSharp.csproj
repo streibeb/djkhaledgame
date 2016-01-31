@@ -45,6 +45,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Khaleed\Khaled_AI.cs" />
      <Compile Include="Assets\RandomAudioScript.cs" />
      <Compile Include="Assets\UI\PanelController.cs" />
      <Compile Include="Assets\animation.cs" />
