@@ -422,7 +422,7 @@ public class gamestate : MonoBehaviour {
 		int previousScore = gameState.Score;
 		gameState.Score += scoreChange;
 
-		if (previousScore/50 < gameState.Score/50) {
+		if (previousScore/100 < gameState.Score/100) {
 			PlaySound ("blessup", 0);
 		}
 
